@@ -12,39 +12,38 @@ class FlutterBlocCubit extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShopCubit, ShopState>(
       builder: (context, state) => state.map(
-          loading: (_) => Scaffold(
-                appBar: AppBar(
-                  title: Text('Flutter Bloc: Cubit'),
-                  actions: const [
-                    CartBadge(count: 0),
-                  ],
-                ),
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-          loaded: (loaded) => Scaffold(
-                appBar: AppBar(
-                  title: Text('Flutter Bloc: Cubit'),
-                  actions: [
-                    CartBadge(count: context.read<ShopCubit>().cartCount()),
-                  ],
-                ),
-                body: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  itemCount: loaded.products.length,
-                  itemBuilder: (context, index) => ProductCard(
-                    addToCart: context.read<ShopCubit>().addToCart,
-                    removeFromCart: context.read<ShopCubit>().removeFromCart,
-                    inCart: context
-                        .read<ShopCubit>()
-                        .inCart(loaded.products[index]),
-                    product: loaded.products[index],
-                  ),
-                ),
-              )),
+        loading: (_) => Scaffold(
+          appBar: AppBar(
+            title: Text('Flutter Bloc: Cubit'),
+            actions: const [
+              CartBadge(count: 0),
+            ],
+          ),
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
+        loaded: (loaded) => Scaffold(
+          appBar: AppBar(
+            title: Text('Flutter Bloc: Cubit'),
+            actions: [
+              CartBadge(count: context.read<ShopCubit>().cartCount()),
+            ],
+          ),
+          body: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: loaded.products.length,
+            itemBuilder: (context, index) => ProductCard(
+              addToCart: context.read<ShopCubit>().addToCart,
+              removeFromCart: context.read<ShopCubit>().removeFromCart,
+              inCart: context.read<ShopCubit>().inCart(loaded.products[index]),
+              product: loaded.products[index],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
