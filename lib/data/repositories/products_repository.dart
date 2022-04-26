@@ -78,7 +78,7 @@ class ProductsRepositoryImpl implements ProductsRepository {
         ),
         const Product(
           id: '9',
-          name: 'Sneakers',
+          name: 'Shoes',
           description: 'Good sneakers',
           imageUrl:
               'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/A_classic_Black_pair_of_Converse_All_Stars_resting_on_the_Black_%26_White_Ed._Shoebox_%281998-2002%29.JPG/180px-A_classic_Black_pair_of_Converse_All_Stars_resting_on_the_Black_%26_White_Ed._Shoebox_%281998-2002%29.JPG',
