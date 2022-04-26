@@ -27,7 +27,7 @@ class FlutterBlocCubit extends StatelessWidget {
           appBar: AppBar(
             title: Text('Flutter Bloc: Cubit'),
             actions: [
-              CartBadge(count: context.read<ShopCubit>().cartCount()),
+              CartBadge(count: context.watch<ShopCubit>().cartCount()),
             ],
           ),
           body: GridView.builder(
@@ -38,7 +38,7 @@ class FlutterBlocCubit extends StatelessWidget {
             itemBuilder: (context, index) => ProductCard(
               addToCart: context.read<ShopCubit>().addToCart,
               removeFromCart: context.read<ShopCubit>().removeFromCart,
-              inCart: context.read<ShopCubit>().inCart(loaded.products[index]),
+              inCart: context.watch<ShopCubit>().inCart(loaded.products[index]),
               product: loaded.products[index],
             ),
           ),

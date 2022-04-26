@@ -25,11 +25,15 @@ class ShopCubit extends Cubit<ShopState> {
   }
 
   void addToCart(Product product) {
+    emit(ShopStateLoading());
     _cart.add(product);
+    emit(ShopStateLoaded(products: _products));
   }
 
   void removeFromCart(Product product) {
+    emit(ShopStateLoading());
     _cart.remove(product);
+    emit(ShopStateLoaded(products: _products));
   }
 
   int cartCount() {
