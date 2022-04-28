@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management/domain/widgets/cart_badge.dart';
 import 'package:state_management/domain/widgets/product_card.dart';
-import 'package:state_management/presentation/flutter_bloc_cubit/product_details.dart';
-import 'package:state_management/presentation/flutter_bloc_cubit/shop_cubit.dart';
-import 'package:state_management/presentation/flutter_bloc_cubit/shop_state.dart';
+import 'package:state_management/presentation/flutter_bloc_bloc/product_details.dart';
+import 'package:state_management/presentation/flutter_bloc_bloc/shop_bloc.dart';
+import 'package:state_management/presentation/flutter_bloc_bloc/shop_state.dart';
 
-class FlutterBlocCubit extends StatelessWidget {
-  const FlutterBlocCubit({Key? key}) : super(key: key);
+class FlutterBlocBloc extends StatelessWidget {
+  const FlutterBlocBloc({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ShopCubit, ShopState>(
-      builder: (context, state) => state.map(
+    return BlocBuilder<ShopBloc, ShopState>(builder: (context, state) {
+      if (state is ShopStateLoading) {
+        context.read<ShopBloc>().add(GetProducts());
+      }
+      return state.map(
         loading: (_) => Scaffold(
           appBar: AppBar(
-            title: Text('Flutter Bloc: Cubit'),
+            title: Text('Flutter Bloc: Bloc'),
             actions: const [
               CartBadge(count: 0),
             ],
@@ -26,9 +29,9 @@ class FlutterBlocCubit extends StatelessWidget {
         ),
         loaded: (loaded) => Scaffold(
           appBar: AppBar(
-            title: Text('Flutter Bloc: Cubit'),
+            title: Text('Flutter Bloc: Bloc'),
             actions: [
-              CartBadge(count: context.watch<ShopCubit>().cartCount()),
+              CartBadge(count: loaded.inCartCount),
             ],
           ),
           body: GridView.builder(
@@ -44,14 +47,17 @@ class FlutterBlocCubit extends StatelessWidget {
                   ),
                 ),
               ),
-              addToCart: context.read<ShopCubit>().addToCart,
-              removeFromCart: context.read<ShopCubit>().removeFromCart,
-              inCart: context.watch<ShopCubit>().inCart(loaded.products[index]),
+              addToCart: (product) =>
+                  context.read<ShopBloc>().add(AddToCart(product: product)),
+              removeFromCart: (product) => context
+                  .read<ShopBloc>()
+                  .add(RemoveFromCart(product: product)),
+              inCart: loaded.isInCart[loaded.products[index].id]!,
               product: loaded.products[index],
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
