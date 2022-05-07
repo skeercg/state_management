@@ -31,7 +31,6 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
   final ProductsService service;
   late final List<Product> _products;
   final Map<String, bool> _isInCart = {};
-  final List<Product> _cart = [];
   int _inCartCount = 0;
 
   void _mapGetProductsEventToState(
@@ -40,12 +39,12 @@ class ShopBloc extends Bloc<ShopEvent, ShopState> {
   ) async {
     emit(ShopStateLoading());
     _products = await service.getProducts();
-    _products.forEach(
-      (product) => _isInCart.putIfAbsent(
+    for (var product in _products) {
+      _isInCart.putIfAbsent(
         product.id,
         () => false,
-      ),
-    );
+      );
+    }
     emit(ShopStateLoaded(
         products: _products, isInCart: _isInCart, inCartCount: _inCartCount));
   }
