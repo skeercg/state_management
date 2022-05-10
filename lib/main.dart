@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:provider/provider.dart';
 import 'package:state_management/main.config.dart';
-import 'package:state_management/presentation/flutter_mobx/flutter_mobx.dart';
-import 'package:state_management/presentation/flutter_mobx/shop_state.dart';
+import 'package:state_management/presentation/custom_bloc/custom_bloc.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -69,17 +67,30 @@ void main() {
 // }
 
 /// MobX
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Provider(
+//       create: (context) => getIt<ShopState>(),
+//       child: MaterialApp(
+//         title: 'Flutter Demo',
+//         home: FlutterMobX(),
+//       ),
+//     );
+//   }
+// }
+
+/// Custom Bloc
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (context) => getIt<ShopState>(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        home: FlutterMobX(),
-      ),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: CustomBloc(),
     );
   }
 }

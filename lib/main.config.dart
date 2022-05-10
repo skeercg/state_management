@@ -10,12 +10,13 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'data/repositories/products_repository.dart' as _i4;
 import 'data/services_impl/products_service_impl.dart' as _i6;
 import 'domain/services/products_service.dart' as _i5;
+import 'presentation/custom_bloc/shop_bloc.dart' as _i8;
 import 'presentation/flutter_bloc_bloc/shop_bloc.dart' as _i7;
-import 'presentation/flutter_bloc_cubit/shop_cubit.dart' as _i8;
-import 'presentation/flutter_mobx/shop_state.dart' as _i9;
+import 'presentation/flutter_bloc_cubit/shop_cubit.dart' as _i9;
+import 'presentation/flutter_mobx/shop_state.dart' as _i10;
 import 'presentation/simple_state_management/cart.dart' as _i3;
 import 'presentation/simple_state_management/products.dart'
-    as _i10; // ignore_for_file: unnecessary_lambdas
+    as _i11; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -28,11 +29,13 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       _i6.ProductsServiceImpl(get<_i4.ProductsRepository>()));
   gh.factory<_i7.ShopBloc>(
       () => _i7.ShopBloc(service: get<_i5.ProductsService>()));
-  gh.factory<_i8.ShopCubit>(
-      () => _i8.ShopCubit(service: get<_i5.ProductsService>()));
-  gh.factory<_i9.ShopState>(
-      () => _i9.ShopState(service: get<_i5.ProductsService>()));
-  gh.factory<_i10.Products>(
-      () => _i10.Products(service: get<_i5.ProductsService>()));
+  gh.factory<_i8.ShopBloc>(
+      () => _i8.ShopBloc(service: get<_i5.ProductsService>()));
+  gh.factory<_i9.ShopCubit>(
+      () => _i9.ShopCubit(service: get<_i5.ProductsService>()));
+  gh.factory<_i10.ShopState>(
+      () => _i10.ShopState(service: get<_i5.ProductsService>()));
+  gh.factory<_i11.Products>(
+      () => _i11.Products(service: get<_i5.ProductsService>()));
   return get;
 }

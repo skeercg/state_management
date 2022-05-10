@@ -15,7 +15,7 @@ class FlutterMobX extends StatelessWidget {
     return Observer(
       builder: (context) => Scaffold(
         appBar: AppBar(
-          title: Text('Flutter Bloc: Cubit'),
+          title: Text('Flutter Mobx'),
           actions: [
             CartBadge(count: context.watch<ShopState>().cart.length),
           ],
