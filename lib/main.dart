@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:redux/redux.dart';
 import 'package:state_management/main.config.dart';
-import 'package:state_management/presentation/custom_bloc/custom_bloc.dart';
+import 'package:state_management/presentation/flutter_redux/flutter_redux.dart';
+import 'package:state_management/presentation/flutter_redux/middleware/products_middleware.dart';
+import 'package:state_management/presentation/flutter_redux/reducers/shop_state_reducer.dart';
+import 'package:state_management/presentation/flutter_redux/shop_state.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -12,7 +17,7 @@ void configureDependencies() => $initGetIt(getIt);
 void main() {
   configureDependencies();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 /// Simple State Management
@@ -83,14 +88,36 @@ void main() {
 // }
 
 /// Custom Bloc
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       home: CustomBloc(),
+//     );
+//   }
+// }
+
+/// Flutter Redux
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final Store<ShopState> store = Store(
+    shopStateReducer,
+    middleware: [productsMiddleware],
+    initialState: ShopState(),
+  );
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: CustomBloc(),
+    return StoreProvider(
+      store: store,
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        home: FlutterRedux(),
+      ),
     );
   }
 }

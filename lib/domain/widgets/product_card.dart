@@ -53,8 +53,8 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 5,
-              right: 10,
+              bottom: 10,
+              left: 10,
               child: Text(
                 '${product.price.toString()}\$',
                 style: TextStyle(
