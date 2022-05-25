@@ -78,21 +78,22 @@ class _$ShopStateCopyWithImpl<$Res> implements $ShopStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $ShopStateLoadingCopyWith<$Res> {
-  factory $ShopStateLoadingCopyWith(
-          ShopStateLoading value, $Res Function(ShopStateLoading) then) =
-      _$ShopStateLoadingCopyWithImpl<$Res>;
+abstract class _$$ShopStateLoadingCopyWith<$Res> {
+  factory _$$ShopStateLoadingCopyWith(
+          _$ShopStateLoading value, $Res Function(_$ShopStateLoading) then) =
+      __$$ShopStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ShopStateLoadingCopyWithImpl<$Res> extends _$ShopStateCopyWithImpl<$Res>
-    implements $ShopStateLoadingCopyWith<$Res> {
-  _$ShopStateLoadingCopyWithImpl(
-      ShopStateLoading _value, $Res Function(ShopStateLoading) _then)
-      : super(_value, (v) => _then(v as ShopStateLoading));
+class __$$ShopStateLoadingCopyWithImpl<$Res>
+    extends _$ShopStateCopyWithImpl<$Res>
+    implements _$$ShopStateLoadingCopyWith<$Res> {
+  __$$ShopStateLoadingCopyWithImpl(
+      _$ShopStateLoading _value, $Res Function(_$ShopStateLoading) _then)
+      : super(_value, (v) => _then(v as _$ShopStateLoading));
 
   @override
-  ShopStateLoading get _value => super._value as ShopStateLoading;
+  _$ShopStateLoading get _value => super._value as _$ShopStateLoading;
 }
 
 /// @nodoc
@@ -108,7 +109,7 @@ class _$ShopStateLoading implements ShopStateLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ShopStateLoading);
+        (other.runtimeType == runtimeType && other is _$ShopStateLoading);
   }
 
   @override
@@ -188,23 +189,24 @@ abstract class ShopStateLoading implements ShopState {
 }
 
 /// @nodoc
-abstract class $ShopStateLoadedCopyWith<$Res> {
-  factory $ShopStateLoadedCopyWith(
-          ShopStateLoaded value, $Res Function(ShopStateLoaded) then) =
-      _$ShopStateLoadedCopyWithImpl<$Res>;
+abstract class _$$ShopStateLoadedCopyWith<$Res> {
+  factory _$$ShopStateLoadedCopyWith(
+          _$ShopStateLoaded value, $Res Function(_$ShopStateLoaded) then) =
+      __$$ShopStateLoadedCopyWithImpl<$Res>;
   $Res call(
       {List<Product> products, Map<String, bool> isInCart, int inCartCount});
 }
 
 /// @nodoc
-class _$ShopStateLoadedCopyWithImpl<$Res> extends _$ShopStateCopyWithImpl<$Res>
-    implements $ShopStateLoadedCopyWith<$Res> {
-  _$ShopStateLoadedCopyWithImpl(
-      ShopStateLoaded _value, $Res Function(ShopStateLoaded) _then)
-      : super(_value, (v) => _then(v as ShopStateLoaded));
+class __$$ShopStateLoadedCopyWithImpl<$Res>
+    extends _$ShopStateCopyWithImpl<$Res>
+    implements _$$ShopStateLoadedCopyWith<$Res> {
+  __$$ShopStateLoadedCopyWithImpl(
+      _$ShopStateLoaded _value, $Res Function(_$ShopStateLoaded) _then)
+      : super(_value, (v) => _then(v as _$ShopStateLoaded));
 
   @override
-  ShopStateLoaded get _value => super._value as ShopStateLoaded;
+  _$ShopStateLoaded get _value => super._value as _$ShopStateLoaded;
 
   @override
   $Res call({
@@ -212,13 +214,13 @@ class _$ShopStateLoadedCopyWithImpl<$Res> extends _$ShopStateCopyWithImpl<$Res>
     Object? isInCart = freezed,
     Object? inCartCount = freezed,
   }) {
-    return _then(ShopStateLoaded(
+    return _then(_$ShopStateLoaded(
       products: products == freezed
-          ? _value.products
+          ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
       isInCart: isInCart == freezed
-          ? _value.isInCart
+          ? _value._isInCart
           : isInCart // ignore: cast_nullable_to_non_nullable
               as Map<String, bool>,
       inCartCount: inCartCount == freezed
@@ -265,9 +267,9 @@ class _$ShopStateLoaded implements ShopStateLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ShopStateLoaded &&
-            const DeepCollectionEquality().equals(other.products, products) &&
-            const DeepCollectionEquality().equals(other.isInCart, isInCart) &&
+            other is _$ShopStateLoaded &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality().equals(other._isInCart, _isInCart) &&
             const DeepCollectionEquality()
                 .equals(other.inCartCount, inCartCount));
   }
@@ -275,14 +277,14 @@ class _$ShopStateLoaded implements ShopStateLoaded {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(products),
-      const DeepCollectionEquality().hash(isInCart),
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_isInCart),
       const DeepCollectionEquality().hash(inCartCount));
 
   @JsonKey(ignore: true)
   @override
-  $ShopStateLoadedCopyWith<ShopStateLoaded> get copyWith =>
-      _$ShopStateLoadedCopyWithImpl<ShopStateLoaded>(this, _$identity);
+  _$$ShopStateLoadedCopyWith<_$ShopStateLoaded> get copyWith =>
+      __$$ShopStateLoadedCopyWithImpl<_$ShopStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -363,6 +365,6 @@ abstract class ShopStateLoaded implements ShopState {
   Map<String, bool> get isInCart => throw _privateConstructorUsedError;
   int get inCartCount => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ShopStateLoadedCopyWith<ShopStateLoaded> get copyWith =>
+  _$$ShopStateLoadedCopyWith<_$ShopStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }

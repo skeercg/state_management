@@ -35,7 +35,7 @@ dependencies:
   injectable:
   provider:
   cupertino_icons: ^1.0.2
-  flutter_riverpod: ^1.0.3
+  flutter_riverpod:
   mobx: ^2.0.7
   flutter_mobx: ^2.0.5
   redux:

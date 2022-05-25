@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:redux/redux.dart';
 import 'package:state_management/main.config.dart';
-import 'package:state_management/presentation/flutter_redux/flutter_redux.dart';
-import 'package:state_management/presentation/flutter_redux/middleware/products_middleware.dart';
-import 'package:state_management/presentation/flutter_redux/reducers/shop_state_reducer.dart';
-import 'package:state_management/presentation/flutter_redux/shop_state.dart';
+import 'package:state_management/presentation/flutter_riverpod/flutter_riverpod.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -101,22 +97,37 @@ void main() {
 // }
 
 /// Flutter Redux
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+// class MyApp extends StatelessWidget {
+//   MyApp({Key? key}) : super(key: key);
+//
+//   final Store<ShopState> store = Store(
+//     shopStateReducer,
+//     middleware: [productsMiddleware],
+//     initialState: ShopState(),
+//   );
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return StoreProvider(
+//       store: store,
+//       child: MaterialApp(
+//         title: 'Flutter Demo',
+//         home: FlutterRedux(),
+//       ),
+//     );
+//   }
+// }
 
-  final Store<ShopState> store = Store(
-    shopStateReducer,
-    middleware: [productsMiddleware],
-    initialState: ShopState(),
-  );
+/// Flutter Riverpod
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
-      store: store,
+    return ProviderScope(
       child: MaterialApp(
         title: 'Flutter Demo',
-        home: FlutterRedux(),
+        home: FlutterRiverpod(),
       ),
     );
   }
