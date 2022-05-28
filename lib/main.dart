@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:state_management/main.config.dart';
-import 'package:state_management/presentation/flutter_riverpod/flutter_riverpod.dart';
+import 'package:state_management/presentation/hooks_riverpod/hooks_riverpod.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -119,6 +119,21 @@ void main() {
 // }
 
 /// Flutter Riverpod
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return ProviderScope(
+//       child: MaterialApp(
+//         title: 'Flutter Demo',
+//         home: FlutterRiverpod(),
+//       ),
+//     );
+//   }
+// }
+
+/// Hooks Riverpod
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -127,7 +142,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp(
         title: 'Flutter Demo',
-        home: FlutterRiverpod(),
+        home: HooksRiverpod(),
       ),
     );
   }
